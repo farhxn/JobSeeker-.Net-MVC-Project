@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Companies List";
+    Layout = "~/Views/Shared/homelayout2.cshtml";
+}
+@model IEnumerable<JOBSEEKER.Models.company>
+
+<section class="pxp-page-header-simple" style="background-color: var(--pxpSecondaryColor);">
+    <div class="pxp-container">
+        <h1>Search Companies</h1>
+        <div class="pxp-hero-subtitle pxp-text-light">Work for the best companies in the world</div>
+        <div class="pxp-hero-form pxp-hero-form-round pxp-large mt-3 mt-lg-4">
+            <form class="row gx-3 align-items-center">
+                <div class="col-12 col-lg">
+                    <div class="input-group mb-3 mb-lg-0">
+                        <span class="input-group-text"><span class="fa fa-search"></span></span>
+                        <input type="text" id="myInput" class="form-control" placeholder="Company Name or Keyword">
+                    </div>
+                </div>
+                <div class="col-12 col-lg pxp-has-left-border">
+                    <div class="input-group mb-3 mb-lg-0">
+                        <span class="input-group-text"><span class="fa fa-globe"></span></span>
+                        <input type="text" id="myInput" class="form-control" placeholder="Location">
+                    </div>
+                </div>
+                <div class="col-12 col-lg pxp-has-left-border">
+                    <div class="input-group mb-3 mb-lg-0">
+                        <span class="input-group-text"><span class="fa fa-folder-o"></span></span>
+                        <input type="text" id="myInput" class="form-control" placeholder="Category">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-auto">
+                    <button>Find Companies</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="mt-100">
+    <div class="pxp-container">
+        <div class="pxp-companies-list-top">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-auto">
+                    <h2><span class="pxp-text-light">Showing</span> @Session["company"] <span class="pxp-text-light">companies</span></h2>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select">
+                        <option value="0" selected>Most relevant</option>
+                        <option value="1">Name Asc</option>
+                        <option value="2">Name Desc</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="myTable">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-xl-4 col-xxl-3 pxp-companies-card-1-container" id="test">
+                    <div class="pxp-companies-card-1 pxp-has-border">
+                        <div class="pxp-companies-card-1-top">
+                            <a href="@Url.Action("singlecompany", "Home", new {@id = @item.ID})" class="pxp-companies-card-1-company-logo"><img src="~/image/@item.logo" class="img-fluid rounded-pill" /></a>
+                            <a href="@Url.Action("singlecompany", "Home", new {@id = @item.ID})" class="pxp-companies-card-1-company-name">@item.Name</a>
+                            <div class="pxp-companies-card-1-company-description pxp-text-light" style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80ch;">@item.discription</div>
+                        </div>
+                        <div class="pxp-companies-card-1-bottom">
+                            <a href="@Url.Action("singlecompany", "Home", new {@id = @item.ID})" class="pxp-companies-card-1-company-jobs">Jobs from @item.Name</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!--<div class="row mt-4 mt-lg-5 justify-content-between align-items-center">
+            <div class="col-auto">
+                <nav class="mt-3 mt-sm-0" aria-label="Companies pagination">
+                    <ul class="pagination pxp-pagination">
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">1</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    </ul>
+                </nav>
+            </div>-->
+            @*<div class="col-auto">
+                <a href="#" class="btn rounded-pill pxp-section-cta mt-3 mt-sm-0">Show me more<span class="fa fa-angle-right"></span></a>
+            </div>*@
+        <!--</div>-->
+    </div>
+</section>
+<br />
+<br />
+<br />
+<br />

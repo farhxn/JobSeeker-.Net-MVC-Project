@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jobseekerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="application">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userimg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="useremail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userid" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="comemail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="application_tittle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="application_locat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="520" FixedLength="false" Unicode="false" />
+    <Property Name="logo" Type="String" MaxLength="520" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="discription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="industry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="founded" Type="Int32" />
+    <Property Name="size" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="facebook" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="twitter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="linkdin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="instagram" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="img1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="img2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="img3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="img4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="job">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="locat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="overview" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="responsiblities" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="experince" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="lvl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="typE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="salary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="company" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="jobprofile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="skills1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="skills2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="skills3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="skills4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="experincetitle1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="company1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="time1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="discription1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="experincetitle2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="company2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="time2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="discription2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="etitle1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="eschool1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="etime1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="edisc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="etitle2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="eschool2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="etime2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="edisc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="jobseekerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="applications" EntityType="Self.application" />
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="companies" EntityType="Self.company" />
+    <EntitySet Name="jobs" EntityType="Self.job" />
+    <EntitySet Name="jobprofiles" EntityType="Self.jobprofile" />
+    <EntitySet Name="admins" EntityType="jobseekerModel.admin" />
+  </EntityContainer>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

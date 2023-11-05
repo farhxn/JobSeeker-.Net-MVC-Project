@@ -1,0 +1,81 @@
+﻿@model IEnumerable<JOBSEEKER.Models.application>
+@{
+    ViewBag.Title = "ComCanidates";
+    Layout = "~/Views/Shared/_Layoutjobpost.cshtml";
+}
+
+<div class="pxp-dashboard-content-details">
+    <h1>Candidates</h1>
+    <p class="pxp-text-light">Detailed list of candidates that applied for your job offers.</p>
+
+    <div class="mt-4 mt-lg-5">
+        <div class="row justify-content-between align-content-center">
+            <div class="col-auto order-2 order-sm-1">
+                <div class="pxp-company-dashboard-jobs-bulk-actions mb-3">
+                </div>
+            </div>
+            <div class="col-auto order-1 order-sm-2">
+                <div class="pxp-company-dashboard-jobs-search mb-3">
+                    <div class="pxp-company-dashboard-jobs-search-results me-3">@Session["no"] candidates</div>
+                    <div class="pxp-company-dashboard-jobs-search-search-form">
+                        <div class="input-group">
+                            <span class="input-group-text"><span class="fa fa-search"></span></span>
+                            <input type="text" class="form-control" placeholder="Search candidates...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="width: 25%;">Name</th>
+                        <th style="width: 20%;">Applied for</th>
+                        <th style="width: 20%;">E-Mail</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="width: 3%;">
+                                <div class="pxp-company-dashboard-candidate-avatar pxp-cover"><img src="~/Image/@item.userimg" class="img-fluid rounded" /></div>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <div class="pxp-company-dashboard-job-title">@item.username</div>
+                                    <div class="pxp-company-dashboard-job-location"><span class="fa fa-globe me-1"></span>@item.application_locat</div>
+                                </a>
+                            </td>
+                            <td><div class="pxp-company-dashboard-job-category">@item.application_tittle</div></td>
+                            <td><div class="pxp-company-dashboard-job-category">@item.useremail</div></td>
+                            <td>
+                                <div class="pxp-dashboard-table-options">
+                                    <ul class="list-unstyled">
+                                        <li><a target="_blank" href="@Url.Action("singlecandiate", "Home", new { @id = item.userid })"><button title="View profile"><span class="fa fa-eye"></span></button></a></li>
+                                        <li><button title="Delete"><span class="fa fa-trash-o"></span></button></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    const listItems = document.querySelectorAll('.list-unstyled li');
+    const thisListItem = document.querySelector('.list-unstyled li:nth-child54)');
+
+
+    listItems.forEach((li) => {
+        li.classList.remove('pxp-active');
+    })
+
+
+    thisListItem.classList.add('pxp-active');
+
+</script>

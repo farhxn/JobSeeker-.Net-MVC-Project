@@ -1,0 +1,134 @@
+﻿@model JOBSEEKER.Models.jobprofile
+@{
+    ViewBag.Title = "single candiate";
+    Layout = "~/Views/Shared/homelayout2.cshtml";
+}
+<br />
+<section>
+    <div class="pxp-container">
+        <div class="pxp-single-candidate-container pxp-has-columns">
+            <div class="row">
+                <div class="col-lg-7 col-xl-8 col-xxl-9">
+                    <div class="pxp-single-candidate-hero pxp-cover pxp-boxed">
+                        <img class="img-fluid" src="~/Image/@Model.cover" />
+                        <div class="pxp-hero-opacity"></div>
+                        <div class="pxp-single-candidate-hero-caption">
+                            <div class="pxp-container">
+                                <div class="pxp-single-candidate-hero-content">
+                                    <div class="pxp-single-candidate-hero-avatar"><img class="img-fluid" style="border-radius:50%" src="~/Image/@Model.img" /></div>
+                                    <div class="pxp-single-candidate-hero-name">
+                                        <h1>@Model.name</h1>
+                                        <div class="pxp-single-candidate-hero-title"><span class="fa fa-globe"></span> @Model.location</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="mt-4 mt-lg-5">
+                        <div class="pxp-single-candidate-content">
+                            <h2>About @Model.name</h2>
+                            <p>@Model.about.</p>
+
+                            <div class="mt-4 mt-lg-5">
+                                <h2>Skills</h2>
+                                <div class="pxp-single-candidate-skills">
+                                    <ul class="list-unstyled">
+                                        <li>@Model.skills1</li>
+                                        <li>@Model.skills2</li>
+                                        <li>@Model.skills3</li>
+                                        <li>@Model.skills4</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 mt-lg-5">
+                                <h2>Work Experience</h2>
+                                <div class="pxp-single-candidate-timeline">
+                                    <div class="pxp-single-candidate-timeline-item">
+                                        <div class="pxp-single-candidate-timeline-dot"></div>
+                                        <div class="pxp-single-candidate-timeline-info ms-3">
+                                            <div class="pxp-single-candidate-timeline-time"><span class="me-3">@Model.time1</span></div>
+                                            <div class="pxp-single-candidate-timeline-position mt-2">@Model.experincetitle1</div>
+                                            <div class="pxp-single-candidate-timeline-company pxp-text-light">@Model.company1</div>
+                                            <div class="pxp-single-candidate-timeline-about mt-2 pb-4">@Model.discription1.</div>
+                                        </div>
+                                    </div>
+                                    <div class="pxp-single-candidate-timeline-item">
+                                        <div class="pxp-single-candidate-timeline-dot"></div>
+                                        <div class="pxp-single-candidate-timeline-info ms-3">
+                                            <div class="pxp-single-candidate-timeline-time"><span class="me-3">@Model.time2</span></div>
+                                            <div class="pxp-single-candidate-timeline-position mt-2">@Model.experincetitle2</div>
+                                            <div class="pxp-single-candidate-timeline-company pxp-text-light">@Model.company2</div>
+                                            <div class="pxp-single-candidate-timeline-about mt-2 pb-4">@Model.discription2.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 mt-lg-5">
+                                <h2>Education & Training</h2>
+                                <div class="pxp-single-candidate-timeline">
+                                    <div class="pxp-single-candidate-timeline-item">
+                                        <div class="pxp-single-candidate-timeline-dot"></div>
+                                        <div class="pxp-single-candidate-timeline-info ms-3">
+                                            <div class="pxp-single-candidate-timeline-time"><span class="me-3">@Model.etime1</span></div>
+                                            <div class="pxp-single-candidate-timeline-position mt-2">@Model.etitle1</div>
+                                            <div class="pxp-single-candidate-timeline-company pxp-text-light">@Model.eschool1</div>
+                                            <div class="pxp-single-candidate-timeline-about mt-2 pb-4">@Model.edisc1.</div>
+                                        </div>
+                                    </div>
+                                    <div class="pxp-single-candidate-timeline-item">
+                                        <div class="pxp-single-candidate-timeline-dot"></div>
+                                        <div class="pxp-single-candidate-timeline-info ms-3">
+                                            <div class="pxp-single-candidate-timeline-time"><span class="me-3">@Model.etime2</span></div>
+                                            <div class="pxp-single-candidate-timeline-position mt-2">@Model.etitle2</div>
+                                            <div class="pxp-single-candidate-timeline-company pxp-text-light">@Model.eschool2</div>
+                                            <div class="pxp-single-candidate-timeline-about mt-2 pb-4">@Model.edisc2.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-lg-5 col-xl-4 col-xxl-3">
+                    <div class="pxp-single-candidate-side-panel mt-5 mt-lg-0">
+                        <div>
+                            <div class="pxp-single-candidate-side-info-label pxp-text-light">Email</div>
+                            <div class="pxp-single-candidate-side-info-data">@Model.email</div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="pxp-single-candidate-side-info-label pxp-text-light">Location</div>
+                            <div class="pxp-single-candidate-side-info-data">@Model.location</div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="pxp-single-candidate-side-info-label pxp-text-light">Phone</div>
+                            <div class="pxp-single-candidate-side-info-data">@Model.phone</div>
+                        </div>
+                    </div>
+
+                    <div class="pxp-single-candidate-side-panel mt-4 mt-lg-5">
+                        <h3>Contact Rebecca</h3>
+                        <form class="mt-4">
+                            <div class="mb-3">
+                                <label for="contact-candidate-name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="contact-candidate-name" placeholder="Enter your name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact-candidate-email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="contact-candidate-email" placeholder="Enter your email address">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact-candidate-message" class="form-label">Message</label>
+                                <textarea class="form-control" id="contact-candidate-message" placeholder="Type your message here..."></textarea>
+                            </div>
+                            <a href="#" class="btn rounded-pill pxp-section-cta d-block">Send Message</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br />

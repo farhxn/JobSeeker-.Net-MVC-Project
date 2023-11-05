@@ -1,0 +1,74 @@
+﻿@model IEnumerable<JOBSEEKER.Models.jobprofile>
+@{
+    ViewBag.Title = "listapplication";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="pxp-dashboard-content-details">
+    <h1>Candidates</h1>
+    <p class="pxp-text-light">Detailed list of Candidates.</p>
+
+    <div class="mt-4 mt-lg-5">
+        <div class="row justify-content-between align-content-center">
+            <div class="col-auto order-2 order-sm-1">
+                <div class="pxp-company-dashboard-jobs-bulk-actions mb-3">
+
+                </div>
+            </div>
+            <div class="col-auto order-1 order-sm-2">
+                <div class="pxp-company-dashboard-jobs-search mb-3">
+                    <div class="pxp-company-dashboard-jobs-search-results me-3">@Session["jobp"] Candidates</div>
+                    <div class="pxp-company-dashboard-jobs-search-search-form">
+                        <div class="input-group">
+                            <span class="input-group-text"><span class="fa fa-search"></span></span>
+                            <input type="search" class="form-control" id="myInput" placeholder="Search Applications...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle" id="myTable">
+                <thead>
+
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>E-Mail</th>
+                        <th>PH. No.#</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    @foreach (var item in Model)
+                    {
+                        <tr id="test">
+
+                            <td>
+                                <div class="pxp-company-dashboard-candidate-avatar pxp-cover"><img src="~/Image/@item.img" class="img-fluid" /></div>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <div class="text-black pxp-company-dashboard-job-title">@item.name</div>
+                                    <div class="pxp-company-dashboard-job-location"><span class="fa fa-globe me-1"></span>@item.location</div>
+                                </a>
+                            </td>
+                            <td><div class="pxp-company-dashboard-job-category">@item.email</div></td>
+                            <td><div class="pxp-company-dashboard-job-category">@item.phone</div></td>
+
+                            <td>
+                                <div class="pxp-dashboard-table-options">
+                                    <ul class="list-unstyled">
+                                        <li><a href="@Url.Action("singlecandiate", "Home",new{@id = item.ID })"><button title="View profile"><span class="fa fa-eye"></span></button></a></li>
+                                        <li><a href="@Url.Action("editcanidadate", "Admin",new{@id = item.ID })"><button title="Reject"><span class="fa fa-pencil-square-o"></span></button></a></li>
+                                        <li><button title="Delete"><span class="fa fa-trash-o"></span></button></li>
+                                    </ul>
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

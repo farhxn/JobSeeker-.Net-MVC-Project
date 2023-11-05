@@ -1,0 +1,309 @@
+﻿@model JOBSEEKER.Jobmodel.tables
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["company"] != null)
+{
+    Response.Write("<script>alert('Welcome You Login As a Recuiter you can post job but you can not apply for the job to apply for the job You can login as a user by clicking on Sign In!  Thank You ')</script>");
+}
+@if (TempData["Success"] != null)
+{
+    Response.Write("<script>alert('Welcome You Login As a user you can apply for the job but you can not post a job to post a job You can login as a Recuiter by clicking on post a job!  Thank You ')</script>");
+}
+
+
+<section class="pxp-hero vh-100" style="background-color: var(--pxpMainColorLight);">
+    <div class="pxp-hero-caption">
+        <div class="pxp-container">
+            <div class="row pxp-pl-80 align-items-center justify-content-between">
+                <div class="col-12 col-xl-6 col-xxl-5">
+                    <h1>Find the perfect<br><span style="color: var(--pxpMainColor);">job</span> for you</h1>
+                    <div class="pxp-hero-subtitle mt-3 mt-lg-4">Search your career opportunity through <strong> @Session["total"] </strong> jobs</div>
+
+                    <div class="pxp-hero-form pxp-hero-form-round mt-3 mt-lg-4">
+                        <form class="row gx-3 align-items-center">
+                            <div class="col-12 col-sm">
+                                <div class="mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" id="myInput" placeholder="Job Title or Keyword">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-auto">
+                                <button><span class="fa fa-search"></span></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="pxp-hero-searches-container">
+                        <div class="pxp-hero-searches-label">Popular Categories</div>
+                        <div class="pxp-hero-searches">
+                            <div class="pxp-hero-searches-items" id="myTable">
+                                @foreach (var cat in Model.Categories)
+                                {
+
+                                    <a href="@Url.Action("catjob", "Home", new {@cat = cat.Name})" id="test">@cat.Name</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-none d-xl-block col-xl-5 position-relative">
+                    <div class="pxp-hero-cards-container pxp-animate-cards pxp-mouse-move" data-speed="160">
+                        <div class="pxp-hero-card pxp-cover pxp-cover-top"><img src="~/assets/images/hero-bg-1.jpg" width="100%" height="100%" style="border-radius:40px" /></div>
+                        <div class="pxp-hero-card-dark"></div>
+                        <div class="pxp-hero-card-light"></div>
+                    </div>
+
+                    <div class="pxp-hero-card-info-container pxp-mouse-move" data-speed="50">
+                        <div class="pxp-hero-card-info pxp-animate-bounce">
+
+                            <div class="pxp-hero-card-info-item">
+                                <div class="pxp-hero-card-info-item-number">@Session["bd"]<span>job offers</span></div>
+                                <div class="pxp-hero-card-info-item-description">in Business Development</div>
+                            </div>
+                            <div class="pxp-hero-card-info-item">
+                                <div class="pxp-hero-card-info-item-number">@Session["mc"]<span>job offers</span></div>
+                                <div class="pxp-hero-card-info-item-description">in Marketing & Communications</div>
+                            </div>
+                            <div class="pxp-hero-card-info-item">
+                                <div class="pxp-hero-card-info-item-number">@Session["hr"]<span>job offers</span></div>
+                                <div class="pxp-hero-card-info-item-description">in Human Resources</div>
+                            </div>
+                            <div class="pxp-hero-card-info-item">
+                                <div class="pxp-hero-card-info-item-number">@Session["pm"]<span>job offers</span></div>
+                                <div class="pxp-hero-card-info-item-description">in Project Management</div>
+                            </div>
+                            <div class="pxp-hero-card-info-item">
+                                <div class="pxp-hero-card-info-item-number">@Session["se"]<span>job offers</span></div>
+                                <div class="pxp-hero-card-info-item-description">in Software Engineering</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="pxp-hero-logos-carousel-container">
+            <div class="pxp-container">
+                <div class="row pxp-pl-80">
+                    <div class="col-12 col-xl-6">
+                        <div class="pxp-hero-logos-carousel owl-carousel">
+                            @foreach (var cat in Model.Companies)
+                            {
+                                <img src="~/image/@cat.logo" class="rounded-pill" >
+                            }
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="pxp-hero-right-bg-card pxp-has-animation"></div>
+</section>
+
+<section class="mt-100">
+    <div class="pxp-container">
+        <h2 class="pxp-section-h2 text-center">Search by Category</h2>
+        <p class="pxp-text-light text-center">Search your career opportunity with our categories</p>
+
+        <div id="myTable" class="row mt-4 mt-md-5 pxp-animate-in pxp-animate-in-top">
+            @foreach (var cat in Model.Categories)
+            {
+                <div class="col-12 col-md-4 col-lg-3 col-xxl-2 pxp-categories-card-1-container" id="test">
+                    <a href="@Url.Action("catjob", "Home", new {@cat = cat.Name})" class="pxp-categories-card-1">
+                        <div class="pxp-categories-card-1-icon-container">
+                            <div class="pxp-categories-card-1-icon">
+                                <span class="@cat.logo"></span>
+                            </div>
+                        </div>
+                        <div class="pxp-categories-card-1-title">@cat.Name</div>
+                        @*<div class="pxp-categories-card-1-subtitle">139 open positions</div>*@
+                    </a>
+                </div>
+            }
+        </div>
+
+        @*<div class="mt-4 mt-md-5 text-center pxp-animate-in pxp-animate-in-top">
+                <a href="jobs-list-1.html" class="btn rounded-pill pxp-section-cta">All Categories<span class="fa fa-angle-right"></span></a>
+            </div>*@
+    </div>
+</section>
+
+<section class="mt-100 pt-100 pb-100" style="background-color: var(--pxpSecondaryColorLight);">
+    <div class="pxp-container">
+        <h2 class="pxp-section-h2 text-center">Featured Job Offers</h2>
+        <p class="pxp-text-light text-center">Search your career opportunity through @Session["total"] jobs</p>
+
+        <div class="row mt-4 mt-md-5 pxp-animate-in pxp-animate-in-top" id="myTable">
+            @foreach (var jo in Model.Jobs)
+            {
+                <div class="col-md-6 col-xl-4 col-xxl-3 pxp-jobs-card-1-container" id="test">
+                    <div class="pxp-jobs-card-1 pxp-has-shadow">
+                        <div class="pxp-jobs-card-1-top">
+                            <a href="@Url.Action("catjob", "Home", new {@cat = jo.category})" class="pxp-jobs-card-1-category">
+                                <div class="pxp-jobs-card-1-category-icon"><span class="fa fa-bullhorn"></span></div>
+                                <div class="pxp-jobs-card-1-category-label">@jo.category</div>
+                            </a>
+                            <a href="@Url.Action("singlejob", "Home", new { @id = jo.ID})" class="pxp-jobs-card-1-title">@jo.title</a>
+                            <div class="pxp-jobs-card-1-details">
+                                <a href="@Url.Action("locatjob", "Home", new {@ocat = jo.locat})" class="pxp-jobs-card-1-location">
+                                    <span class="fa fa-globe"></span>@jo.locat
+                                </a>
+                                <div class="pxp-jobs-card-1-type">@jo.typE</div>
+                            </div>
+                        </div>
+                        <div class="pxp-jobs-card-1-bottom">
+                            <div class="pxp-jobs-card-1-bottom-left">
+                                <div class="pxp-jobs-card-1-date pxp-text-light">Posted by</div>
+                                <a href="@Url.Action("singlecom", "Home", new { @name = jo.company})" class="pxp-jobs-card-1-company">@jo.company</a>
+                            </div>
+                            <a href="@Url.Action("singlejob", "Home", new { @id = jo.ID})" class="pxp-jobs-card-1-company-logo"><img src="~/image/@jo.cover" class="img-fluid rounded" /> </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="mt-4 mt-md-5 text-center pxp-animate-in pxp-animate-in-top">
+            <a href="@Url.Action("findjob", "Home")" class="btn rounded-pill pxp-section-cta">All Job Offers<span class="fa fa-angle-right"></span></a>
+        </div>
+    </div>
+</section>
+
+<section class="mt-100">
+    <div class="pxp-container">
+        <h2 class="pxp-section-h2 text-center">Find Best Companies</h2>
+        <p class="pxp-text-light text-center">Work for the best companies in the world</p>
+
+        <div id="myTable" class="row mt-4 mt-md-5 pxp-animate-in pxp-animate-in-top">
+            @foreach (var item in Model.Companies)
+            {
+                <div id="test" class="col-md-6 col-xl-4 col-xxl-3 pxp-companies-card-1-container">
+                    <div class="pxp-companies-card-1 pxp-has-border">
+                        <div class="pxp-companies-card-1-top">
+                            <a href="@Url.Action("singlecompany", "Home", new {@id = @item.ID})" class="pxp-companies-card-1-company-logo"> <img src="~/image/@item.logo" style="border-radius:40%;" class="img-fluid rounded-pil" /></a>
+                            <a href="@Url.Action("singlecompany", "Home", new {@id = @item.ID})" class="pxp-companies-card-1-company-name">@item.Name</a>
+                            <div class="pxp-companies-card-1-company-description pxp-text-light" style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80ch;">@item.discription</div>
+                        </div>
+                        <div class="pxp-companies-card-1-bottom">
+                            <a href="@Url.Action("singlecompany", "Home", new {@id = @item.ID})" class="pxp-companies-card-1-company-jobs"><strong>@item.Name</strong> Ralevant jobs</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="mt-4 mt-md-5 text-center pxp-animate-in pxp-animate-in-top">
+            <a href="@Url.Action("company" , "Home" )" class="btn rounded-pill pxp-section-cta">All Companies<span class="fa fa-angle-right"></span></a>
+        </div>
+    </div>
+</section>
+
+<section class="mt-100">
+    <div class="pxp-container">
+        <h2 class="pxp-section-h2 text-center">Featured Cities</h2>
+        <p class="pxp-text-light text-center">Start your next carrer in a beautiful city</p>
+
+        <div class="row mt-4 mt-md-5 pxp-animate-in pxp-animate-in-top">
+            <div class="col-md-6 col-xl-4 col-xxl-3">
+                <a href="@Url.Action("locatjob", "Home", new {@ocat = "Karachi"})" class="pxp-cities-card-2">
+                    <div class="pxp-cities-card-2-image-container">
+                        <div class="pxp-cities-card-2-image pxp-cover"><img src="~/assets/images/karachi.jpg" class="figure-img" height="170%" /></div>
+                    </div>
+                    <div class="pxp-cities-card-2-info">
+                        <div class="pxp-cities-card-2-name">Karachi, PK</div>
+                        <div class="pxp-cities-card-2-jobs">@Session["khi"] open positions</div>
+                    </div>
+                </a>
+                <a href="@Url.Action("locatjob", "Home", new {@ocat = "Lahore"})" class="pxp-cities-card-2">
+                    <div class="pxp-cities-card-2-image-container">
+                        <div class="pxp-cities-card-2-image pxp-cover"><img src="~/assets/images/lahore.jpg" class="figure-img" height="150%" /></div>
+                    </div>
+                    <div class="pxp-cities-card-2-info">
+                        <div class="pxp-cities-card-2-name">Lahore, PK</div>
+                        <div class="pxp-cities-card-2-jobs">@Session["lhr"] open positions</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-4 col-xxl-3">
+                <a href="@Url.Action("locatjob", "Home", new {@ocat = "London"})" class="pxp-cities-card-2 pxp-is-featured">
+                    <div class="pxp-cities-card-2-image-container">
+                        <div class="pxp-cities-card-2-image pxp-cover"><img src="~/assets/images/city-6.jpg" class="figure-img" height="100%" /></div>
+                    </div>
+                    <div class="pxp-cities-card-2-info">
+                        <div class="pxp-cities-card-2-name">London, UK</div>
+                        <div class="pxp-cities-card-2-jobs">@Session["ln"] open positions</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-4 col-xxl-3">
+                <a href="@Url.Action("locatjob", "Home", new {@ocat = "Beiging"})" class="pxp-cities-card-2">
+                    <div class="pxp-cities-card-2-image-container">
+                        <div class="pxp-cities-card-2-image pxp-cover"><img src="~/assets/images/china.jpg" class="figure-img" height="150%" /></div>
+                    </div>
+                    <div class="pxp-cities-card-2-info">
+                        <div class="pxp-cities-card-2-name">Beijing, China</div>
+                        <div class="pxp-cities-card-2-jobs">@Session["bj"] open positions</div>
+                    </div>
+                </a>
+                <a href="@Url.Action("locatjob", "Home", new {@ocat = "Los Angles"})" class="pxp-cities-card-2">
+                    <div class="pxp-cities-card-2-image-container">
+                        <div class="pxp-cities-card-2-image pxp-cover"><img src="~/assets/images/city-2.jpg" class="figure-img" height="150%" /></div>
+                    </div>
+                    <div class="pxp-cities-card-2-info">
+                        <div class="pxp-cities-card-2-name">Los Angeles, CA</div>
+                        <div class="pxp-cities-card-2-jobs">@Session["la"] open positions</div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="mt-100">
+    <div class="pxp-container">
+        <h2 class="pxp-section-h2 text-center">Stay Up to Date</h2>
+        <p class="pxp-text-light text-center">Subscribe to our newsletter to receive our weekly feed.</p>
+
+        <div class="row mt-4 mt-md-5 justify-content-center">
+            <div class="col-md-9 col-lg-7 col-xl-6 col-xxl-5">
+                <div class="pxp-subscribe-1-container pxp-animate-in pxp-animate-in-top">
+                    <div class="pxp-subscribe-1-image">
+                        <img src="~/assets/images/subscribe.png" alt="Stay Up to Date">
+                    </div>
+                    <div class="pxp-subscribe-1-form">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Enter your email...">
+                                <button class="btn btn-primary" type="button">Subscribe<span class="fa fa-angle-right"></span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br /><br /><br />
+    </div>
+</section>
+<div class="modal show" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<JOBSEEKER.Models.application>
+@{
+    ViewBag.Title = "Company Dashboard";
+    Layout = "~/Views/Shared/_Layoutjobpost.cshtml";
+}
+<div class="pxp-dashboard-content-details">
+    <h1>Dashboard</h1>
+    <p class="pxp-text-light">Welcome to JOBSEEKER!</p>
+
+    <div class="row mt-4 mt-lg-5 align-items-center">
+        <div class="col-sm-6 col-xxl-3">
+            <div class="pxp-dashboard-stats-card bg-primary bg-opacity-10 mb-3 mb-xxl-0">
+                <div class="pxp-dashboard-stats-card-icon text-primary">
+                    <span class="fa fa-file-text-o"></span>
+                </div>
+                <div class="pxp-dashboard-stats-card-info">
+                    <div class="pxp-dashboard-stats-card-info-number">@Session["totaljobs"]</div>
+                    <div class="pxp-dashboard-stats-card-info-text pxp-text-light">Jobs posted</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+            <div class="pxp-dashboard-stats-card bg-primary bg-opacity-10 mb-3 mb-xxl-0">
+                <div class="pxp-dashboard-stats-card-icon text-success">
+                    <span class="fa fa-user-circle-o"></span>
+                </div>
+                <div class="pxp-dashboard-stats-card-info">
+                    <div class="pxp-dashboard-stats-card-info-number">@Session["applicactions"]</div>
+                    <div class="pxp-dashboard-stats-card-info-text pxp-text-light">Applications Received</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 mt-lg-5">
+        <h2>Recent Candidates</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width: 3%;"><div class="pxp-company-dashboard-candidate-avatar pxp-cover"><img src="~/Image/@item.userimg" class="img-fluid rounded" /></div></td>
+                        <td style="width: 25%;"><div class="pxp-company-dashboard-candidate-name">@item.username</div></td>
+                        <td style="width: 25%;"><div class="pxp-company-dashboard-candidate-title">@item.application_tittle</div></td>
+                        <td><div class="pxp-company-dashboard-candidate-location"><span class="fa fa-globe"></span>@item.application_locat</div></td>
+                        <td>
+                            <div class="pxp-dashboard-table-options">
+                                <ul class="list-unstyled">
+                                    <li><a target="_blank" href="@Url.Action("singlecandiate", "Home", new { @id = item.userid })"><button title="View profile"><span class="fa fa-eye"></span></button></a></li>
+                                    <li><button title="Send message"><span class="fa fa-envelope-o"></span></button></li>
+                                    <li><button title="Delete"><span class="fa fa-trash-o"></span></button></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </table>
+        </div>
+    </div>
+
+</div>

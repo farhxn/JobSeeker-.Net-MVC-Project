@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Login as a Recruiter";
+    Layout = "~/Views/Shared/homelayout2.cshtml";
+}
+@model JOBSEEKER.Models.company
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div class="col-6 offset-3">
+
+        <div class="pxp-user-modal-fig text-center">
+            <img src="~/assets/images/signin-fig.png" alt="Sign in">
+        </div>
+    </div>
+    <div class="col-6 offset-3">
+
+        <h5 class="modal-title text-center mt-4" id="signinModal">Welcome back Recuiter!</h5>
+        @using (Html.BeginForm("loginR", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <form class="mt-4">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-floating mb-3">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @placeholder = "user@gmail.com", required = "required", type = "mail" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    <label for="pxp-signin-email">Email address &nbsp;  <span class="fa fa-envelope-o"></span> </label>
+
+                </div>
+                <div class="form-floating mb-3">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "*********", required = "required", type = "password" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                    <label for="pxp-signin-password">
+                        Password &nbsp;<span class="fa fa-lock"></span>
+                    </label>
+
+                </div>
+                <button class="btn rounded-pill pxp-modal-cta" type="submit" style="width:100%;">Continue</button>
+
+                <div class="mt-4 text-center pxp-modal-small">
+                    <a href="@Url.Action("loginU", "Home")" class="pxp-modal-link">Login as User</a>
+                </div>
+                <div class="mt-4 text-center pxp-modal-small">
+                    New to Jobster? <a role="button" class="" href="@Url.Action("RegisterR", "Home")">Create an account</a>
+                </div>
+            </form>
+        }
+    </div>
+    </div>
+    <br />

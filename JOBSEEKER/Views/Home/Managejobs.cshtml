@@ -1,0 +1,87 @@
+﻿@model IEnumerable<JOBSEEKER.Models.job>
+@{
+    ViewBag.Title = "Managejobs";
+    Layout = "~/Views/Shared/_Layoutjobpost.cshtml";
+}
+
+<div class="pxp-dashboard-content-details">
+    <h1>Manage Jobs</h1>
+    <p class="pxp-text-light">Detailed list with all your job offers.</p>
+
+    <div class="mt-4 mt-lg-5">
+        <div class="row justify-content-between align-content-center">
+            <div class="col-auto order-2 order-sm-1">
+                <div class="pxp-company-dashboard-jobs-bulk-actions mb-3">
+
+
+                </div>
+            </div>
+            <div class="col-auto order-1 order-sm-2">
+                <div class="pxp-company-dashboard-jobs-search mb-3">
+                    <div class="pxp-company-dashboard-jobs-search-results me-3">@Session["Count"] jobs</div>
+                    <div class="pxp-company-dashboard-jobs-search-search-form">
+                        <div class="input-group">
+                            <span class="input-group-text"><span class="fa fa-search"></span></span>
+                            <input type="text" class="form-control" placeholder="Search jobs...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Job</th>
+                        <th style="width: 20%;">Category</th>
+                        <th style="width: 12%;">Type</th>
+                        <th style="width: 15%;">Applications</th>
+                        <th>Date<span class="fa fa-angle-up ms-3"></span></th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                <a target="_blank" href="@Url.Action("singlejob","Home", new { @id = @item.ID})">
+                                    <div class="pxp-company-dashboard-job-title">@item.title</div>
+                                    <div class="pxp-company-dashboard-job-location"><span class="fa fa-globe me-1"></span>@item.locat</div>
+                                </a>
+                            </td>
+                            <td><div class="pxp-company-dashboard-job-category">@item.category</div></td>
+                            <td><div class="pxp-company-dashboard-job-type">@item.typE</div></td>
+                            <td><a href="@Url.Action("ComCanidates","Home")" class="pxp-company-dashboard-job-applications">View Candidates</a></td>
+                            <td>
+                                <div class="pxp-company-dashboard-job-status"><span class="badge rounded-pill bg-success">Published</span></div>
+                            </td>
+                            <td>
+                                <div class="pxp-dashboard-table-options">
+                                    <ul class="list-unstyled">
+                                        <li> <a target="_blank" href="@Url.Action("editjobs","Home", new { @id = @item.ID})"> <button title="Edit"><span class="fa fa-pencil"></span></button></a></li>
+                                        <li><a target ="_blank" href="@Url.Action("singlejob","Home", new { @id = @item.ID})"><button title="Preview"><span class="fa fa-eye"></span></button></a></li>
+                                        <li><button title="Delete"><span class="fa fa-trash-o"></span></button></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }</tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    const listItems = document.querySelectorAll('.list-unstyled li');
+    const thisListItem = document.querySelector('.list-unstyled li:nth-child(4)');
+
+
+    listItems.forEach((li) => {
+        li.classList.remove('pxp-active');
+    })
+
+
+    thisListItem.classList.add('pxp-active');
+
+</script>

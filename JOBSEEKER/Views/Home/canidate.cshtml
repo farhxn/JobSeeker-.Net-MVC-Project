@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Canidate List";
+    Layout = "~/Views/Shared/homelayout2.cshtml";
+}
+@model IEnumerable<JOBSEEKER.Models.jobprofile>
+<section class="pxp-page-header-simple" style="background-color: var(--pxpSecondaryColor);">
+    <div class="pxp-container">
+        <h1>Search Candidates</h1>
+        <div class="pxp-hero-subtitle pxp-text-light">Work with the most talented candidates in the world</div>
+        <div class="pxp-hero-form pxp-hero-form-round pxp-large mt-3 mt-lg-4">
+            <form class="row gx-3 align-items-center">
+                <div class="col-12 col-lg">
+                    <div class="input-group mb-3 mb-lg-0">
+                        <span class="input-group-text"><span class="fa fa-search"></span></span>
+                        <input type="text" id="myInput" class="form-control" placeholder="Company Name or Keyword">
+                    </div>
+                </div>
+                <div class="col-12 col-lg pxp-has-left-border">
+                    <div class="input-group mb-3 mb-lg-0">
+                        <span class="input-group-text"><span class="fa fa-globe"></span></span>
+                        <input type="text" id="myInput" class="form-control" placeholder="Location">
+                    </div>
+                </div>
+                <div class="col-12 col-lg pxp-has-left-border">
+                    <div class="input-group mb-3 mb-lg-0">
+                        <span class="input-group-text"><span class="fa fa-folder-o"></span></span>
+                        <input type="text" id="myInput" class="form-control" placeholder="Category">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-auto">
+                    <button>Find Candidates</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="mt-100">
+    <div class="pxp-container">
+        <div class="pxp-candidates-list-top">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-auto">
+                    <h2><span class="pxp-text-light">Showing</span> @Session["jobprofiles"] <span class="pxp-text-light">candidates</span></h2>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select">
+                        <option value="0" selected>Most relevant</option>
+                        <option value="1">Name Asc</option>
+                        <option value="2">Name Desc</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="myTable">
+            @foreach (var item in Model)
+            {
+
+
+            <div class="col-md-6 col-xl-4 col-xxl-3 pxp-candiadates-card-1-container" id="test">
+                <div class="pxp-candiadates-card-1 pxp-has-border text-center">
+                    <div class="pxp-candiadates-card-1-top">
+                        <div class="pxp-candiadates-card-1-avatar pxp-cover"><img src="~/image/@item.img" class="img-fluid rounded-circle" /></div>
+                        <div class="pxp-candiadates-card-1-name">@item.name</div>
+                        <div class="pxp-candiadates-card-1-title">@item.title</div>
+                        <div class="pxp-candiadates-card-1-location"><span class="fa fa-globe"></span>@item.location</div>
+                    </div>
+                    <div class="pxp-candiadates-card-1-bottom">
+                        <div class="pxp-candiadates-card-1-cta">
+                            <a href="@Url.Action("singlecandiate","Home",new {@id = @item.ID})">View profile<span class="fa fa-angle-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+
+    </div>
+</section>
+<br />
+<br />
+<br />
+<br />

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="jobseekerModelStoreContainer" CdmEntityContainer="jobseekerEntities4">
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="jobseekerModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="jobseekerModel.company">
+        <MappingFragment StoreEntitySet="company">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="Cover" ColumnName="Cover" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="discription" ColumnName="discription" />
+          <ScalarProperty Name="industry" ColumnName="industry" />
+          <ScalarProperty Name="founded" ColumnName="founded" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="facebook" ColumnName="facebook" />
+          <ScalarProperty Name="twitter" ColumnName="twitter" />
+          <ScalarProperty Name="linkdin" ColumnName="linkdin" />
+          <ScalarProperty Name="instagram" ColumnName="instagram" />
+          <ScalarProperty Name="img1" ColumnName="img1" />
+          <ScalarProperty Name="img2" ColumnName="img2" />
+          <ScalarProperty Name="img3" ColumnName="img3" />
+          <ScalarProperty Name="img4" ColumnName="img4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobs">
+      <EntityTypeMapping TypeName="jobseekerModel.job">
+        <MappingFragment StoreEntitySet="job">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="locat" ColumnName="locat" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="overview" ColumnName="overview" />
+          <ScalarProperty Name="responsiblities" ColumnName="responsiblities" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+          <ScalarProperty Name="experince" ColumnName="experince" />
+          <ScalarProperty Name="lvl" ColumnName="lvl" />
+          <ScalarProperty Name="typE" ColumnName="typE" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="cover" ColumnName="cover" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobprofiles">
+      <EntityTypeMapping TypeName="jobseekerModel.jobprofile">
+        <MappingFragment StoreEntitySet="jobprofile">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="cover" ColumnName="cover" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="about" ColumnName="about" />
+          <ScalarProperty Name="skills1" ColumnName="skills1" />
+          <ScalarProperty Name="skills2" ColumnName="skills2" />
+          <ScalarProperty Name="skills3" ColumnName="skills3" />
+          <ScalarProperty Name="skills4" ColumnName="skills4" />
+          <ScalarProperty Name="experincetitle1" ColumnName="experincetitle1" />
+          <ScalarProperty Name="company1" ColumnName="company1" />
+          <ScalarProperty Name="time1" ColumnName="time1" />
+          <ScalarProperty Name="discription1" ColumnName="discription1" />
+          <ScalarProperty Name="experincetitle2" ColumnName="experincetitle2" />
+          <ScalarProperty Name="company2" ColumnName="company2" />
+          <ScalarProperty Name="time2" ColumnName="time2" />
+          <ScalarProperty Name="discription2" ColumnName="discription2" />
+          <ScalarProperty Name="etitle1" ColumnName="etitle1" />
+          <ScalarProperty Name="eschool1" ColumnName="eschool1" />
+          <ScalarProperty Name="etime1" ColumnName="etime1" />
+          <ScalarProperty Name="edisc1" ColumnName="edisc1" />
+          <ScalarProperty Name="etitle2" ColumnName="etitle2" />
+          <ScalarProperty Name="eschool2" ColumnName="eschool2" />
+          <ScalarProperty Name="etime2" ColumnName="etime2" />
+          <ScalarProperty Name="edisc2" ColumnName="edisc2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="applications">
+      <EntityTypeMapping TypeName="jobseekerModel.application">
+        <MappingFragment StoreEntitySet="applications">
+          <ScalarProperty Name="comname" ColumnName="comname" />
+          <ScalarProperty Name="comid" ColumnName="comid" />
+          <ScalarProperty Name="useremail" ColumnName="useremail" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

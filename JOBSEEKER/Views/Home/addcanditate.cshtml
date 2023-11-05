@@ -1,0 +1,233 @@
+﻿
+@{
+    ViewBag.Title = "Add Candidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model JOBSEEKER.Models.jobprofile
+<br />
+<br />
+<div class="pxp-dashboard-content-details">
+    <h1 class="text-center">Edit Profile</h1>
+    <p class="text-center pxp-text-light">Edit your candidate profile.</p>
+    @using (Html.BeginForm("addcanditate", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+<form>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row mt-4 mt-lg-5">
+        <div class="col-xxl-8">
+            <div class="row">
+                @Html.HiddenFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", @placeholder = "House No. A4 street 12, New york,USA  ", required = "required", @value = "model => model.ID" } })
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-location" class="form-label">Address</label>
+                        @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control", @placeholder = "House No. A4 street 12, New york,USA  ", required = "required", @value = "model => model.location" } })
+                        @Html.ValidationMessageFor(model => model.location, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+          
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-phone" class="form-label">Phone</label>    
+                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "03XXX XXXXXXX", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-4">
+            <div class="form-label">&nbsp;</div>
+            <div class="pxp-candidate-cover mb-3">
+                <input type="file" name="file" id="pxp-candidate-cover-choose-file" accept="image/*" required>
+                <label for="pxp-candidate-cover-choose-file" class="pxp-cover"><span>Upload Cover Image</span></label>
+                @Html.ValidationMessageFor(model => model.cover, "", new { @class = "text-danger", required = "required" })
+            </div>
+            <div class="pxp-candidate-photo mb-3">
+                <input type="file" name="logo" id="pxp-candidate-photo-choose-file" accept="image/*" required>
+                <label for="pxp-candidate-photo-choose-file" class="pxp-cover"><span>Upload<br>Photo</span></label>
+                @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="pxp-candidate-about" class="form-label">About you</label>
+        @Html.EditorFor(model => model.about, new { htmlAttributes = new { @class = "form-control", @placeholder = "I AM Front End developer..... ", required = "required" } })
+        @Html.ValidationMessageFor(model => model.about, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mt-4 mt-lg-5">
+        <h2>Skills</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="pxp-candidate-title" class="form-label">Add Skills<code>*</code></label>
+                    @Html.EditorFor(model => model.skills1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Html....", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.skills1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="pxp-candidate-location" class="form-label">Add Skills</label>
+                    @Html.EditorFor(model => model.skills2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Html...." } })
+                    @Html.ValidationMessageFor(model => model.skills2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="pxp-candidate-title" class="form-label">Add Skills</label>
+                    @Html.EditorFor(model => model.skills3, new { htmlAttributes = new { @class = "form-control", @placeholder = "Html....."} })
+                    @Html.ValidationMessageFor(model => model.skills3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="pxp-candidate-location" class="form-label">Add Skills</label>
+                    @Html.EditorFor(model => model.skills4, new { htmlAttributes = new { @class = "form-control", @placeholder = "Html.....", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.skills4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 mt-lg-5">
+        <h2>Work Experience</h2>
+
+        <div class="row mt-3 mt-lg-4">
+            <div class="col-6">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-work-title" class="form-label">Job title</label>
+                        @Html.EditorFor(model => model.experincetitle1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Senior Developer" } })
+                        @Html.ValidationMessageFor(model => model.experincetitle1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-work-company" class="form-label">Company</label>
+                        @Html.EditorFor(model => model.company1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Microsoft" } })
+                        @Html.ValidationMessageFor(model => model.company1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-work-time" class="form-label">Time period</label>
+                        @Html.EditorFor(model => model.time1, new { htmlAttributes = new { @class = "form-control", @placeholder = "3+ Month" } })
+                        @Html.ValidationMessageFor(model => model.time1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="pxp-candidate-work-about" class="form-label">Description</label><br />
+                    @Html.EditorFor(model => model.discription1, new { htmlAttributes = new {@placeholder="About Job", @class = "form-control pxp-smaller" } })
+                    @Html.ValidationMessageFor(model => model.discription1, "", new {@maxlength="2", @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-work-title" class="form-label">Job title</label>
+                        @Html.EditorFor(model => model.experincetitle2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Senior Developer" } })
+                        @Html.ValidationMessageFor(model => model.experincetitle2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-work-company" class="form-label">Company</label>
+                        @Html.EditorFor(model => model.company2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Microsoft" } })
+                        @Html.ValidationMessageFor(model => model.company2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-work-time" class="form-label">Time period</label>
+                        @Html.EditorFor(model => model.time2, new { htmlAttributes = new { @class = "form-control", @placeholder = "3+ Month" } })
+                        @Html.ValidationMessageFor(model => model.time2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="pxp-candidate-work-about" class="form-label">Description</label><br />
+                    @Html.EditorFor(model => model.discription2, new { htmlAttributes = new { @placeholder = "About Job", @class = "form-control pxp-smaller" } })
+                    @Html.ValidationMessageFor(model => model.discription2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mt-4 mt-lg-5">
+        <h2>Education & Training</h2>
+
+        <div class="row mt-3 mt-lg-4">
+            <div class="col-6">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-edu-title" class="form-label">Title<code>*</code></label>
+                        @Html.EditorFor(model => model.etitle1, new { htmlAttributes = new { @placeholder = "Bachelors in Software Engenering", @class = "form-control pxp-smaller", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.etitle1, "", new {  @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-edu-school" class="form-label">School</label>
+                        @Html.EditorFor(model => model.eschool1, new { htmlAttributes = new { @placeholder = "Bahria University", @class = "form-control pxp-smaller", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.eschool1, "", new { @maxlength = "2", @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-edu-time" class="form-label">Time period</label>
+                        @Html.EditorFor(model => model.etime1, new { htmlAttributes = new { @placeholder = "4 years", @class = "form-control pxp-smaller", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.etime1, "", new { @maxlength = "2", @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="pxp-candidate-edu-about" class="form-label">Description</label>
+                    @Html.EditorFor(model => model.edisc1, new { htmlAttributes = new { @placeholder = "About Degree", @class = "form-control pxp-smaller", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.edisc1, "", new { @maxlength = "2", @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-edu-title" class="form-label">Title<code>*</code></label>
+                        @Html.EditorFor(model => model.etitle2, new { htmlAttributes = new { @placeholder = "Bachelors in Software Engenering", @class = "form-control pxp-smaller", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.etitle2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-edu-school" class="form-label">School</label>
+                        @Html.EditorFor(model => model.eschool2, new { htmlAttributes = new { @placeholder = "Bahria University", @class = "form-control pxp-smaller", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.eschool2, "", new { @maxlength = "2", @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-candidate-edu-time" class="form-label">Time period</label>
+                        @Html.EditorFor(model => model.etime2, new { htmlAttributes = new { @placeholder = "4 years", @class = "form-control pxp-smaller", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.etime2, "", new { @maxlength = "2", @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="pxp-candidate-edu-about" class="form-label">Description</label>
+                    @Html.EditorFor(model => model.edisc2, new { htmlAttributes = new { @placeholder = "About Degree", @class = "form-control pxp-smaller", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.edisc2, "", new { @maxlength = "2", @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 mt-lg-5">
+        <button class="btn rounded-pill pxp-section-cta">Save Profile</button>
+    </div>
+</form>
+    }
+    </div>

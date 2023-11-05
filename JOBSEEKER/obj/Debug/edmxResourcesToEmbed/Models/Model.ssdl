@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jobseekerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="applications">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="username" Type="varchar(max)" />
+    <Property Name="useremail" Type="varchar(max)" />
+    <Property Name="comid" Type="int" />
+    <Property Name="comname" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="520" />
+    <Property Name="logo" Type="varchar" MaxLength="520" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="email" Type="varchar(max)" />
+    <Property Name="password" Type="varchar(max)" />
+    <Property Name="phone" Type="varchar(max)" />
+    <Property Name="website" Type="varchar(max)" />
+    <Property Name="Cover" Type="varchar(max)" />
+    <Property Name="logo" Type="varchar(max)" />
+    <Property Name="discription" Type="varchar(max)" />
+    <Property Name="industry" Type="varchar(max)" />
+    <Property Name="founded" Type="int" />
+    <Property Name="size" Type="varchar(max)" />
+    <Property Name="country" Type="varchar(max)" />
+    <Property Name="state" Type="varchar(max)" />
+    <Property Name="address" Type="varchar(max)" />
+    <Property Name="facebook" Type="varchar(max)" />
+    <Property Name="twitter" Type="varchar(max)" />
+    <Property Name="linkdin" Type="varchar(max)" />
+    <Property Name="instagram" Type="varchar(max)" />
+    <Property Name="img1" Type="varchar(max)" />
+    <Property Name="img2" Type="varchar(max)" />
+    <Property Name="img3" Type="varchar(max)" />
+    <Property Name="img4" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="job">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar(max)" />
+    <Property Name="locat" Type="varchar(max)" />
+    <Property Name="category" Type="varchar(max)" />
+    <Property Name="overview" Type="varchar(max)" />
+    <Property Name="responsiblities" Type="varchar(max)" />
+    <Property Name="skills" Type="varchar(max)" />
+    <Property Name="experince" Type="varchar(max)" />
+    <Property Name="lvl" Type="varchar(max)" />
+    <Property Name="typE" Type="varchar(max)" />
+    <Property Name="salary" Type="varchar(max)" />
+    <Property Name="company" Type="varchar(max)" />
+    <Property Name="cover" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="jobprofile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar(max)" />
+    <Property Name="email" Type="varchar(max)" />
+    <Property Name="password" Type="varchar(max)" />
+    <Property Name="title" Type="varchar(max)" />
+    <Property Name="location" Type="varchar(max)" />
+    <Property Name="phone" Type="varchar(max)" />
+    <Property Name="cover" Type="varchar(max)" />
+    <Property Name="img" Type="varchar(max)" />
+    <Property Name="about" Type="varchar(max)" />
+    <Property Name="skills1" Type="varchar(max)" />
+    <Property Name="skills2" Type="varchar(max)" />
+    <Property Name="skills3" Type="varchar(max)" />
+    <Property Name="skills4" Type="varchar(max)" />
+    <Property Name="experincetitle1" Type="varchar(max)" />
+    <Property Name="company1" Type="varchar(max)" />
+    <Property Name="time1" Type="varchar(max)" />
+    <Property Name="discription1" Type="varchar(max)" />
+    <Property Name="experincetitle2" Type="varchar(max)" />
+    <Property Name="company2" Type="varchar(max)" />
+    <Property Name="time2" Type="varchar(max)" />
+    <Property Name="discription2" Type="varchar(max)" />
+    <Property Name="etitle1" Type="varchar(max)" />
+    <Property Name="eschool1" Type="varchar(max)" />
+    <Property Name="etime1" Type="varchar(max)" />
+    <Property Name="edisc1" Type="varchar(max)" />
+    <Property Name="etitle2" Type="varchar(max)" />
+    <Property Name="eschool2" Type="varchar(max)" />
+    <Property Name="etime2" Type="varchar(max)" />
+    <Property Name="edisc2" Type="varchar(max)" />
+  </EntityType>
+  <EntityContainer Name="jobseekerModelStoreContainer">
+    <EntitySet Name="applications" EntityType="Self.applications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="job" EntityType="Self.job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="jobprofile" EntityType="Self.jobprofile" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "add job";
+    Layout = "~/Views/Shared/_Layoutjobpost.cshtml";
+}
+@model JOBSEEKER.Models.job
+<br /> <div class="pxp-dashboard-content-details">
+    <h1>New Job Offer</h1>
+    <p class="pxp-text-light">Add a new job to your company's jobs list.</p>
+    @using (Html.BeginForm("addjob", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <form>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row mt-4 mt-lg-5">
+                @Html.EditorFor(model => model.company, new{htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value= @Session["CompanyName"],@Hidden="Hidden" } })
+                @Html.ValidationMessageFor(model => model.company, "", new { @class = "text-danger" });
+
+
+                <div class="col-xxl-6">
+                    <div class="mb-3">
+                        <label for="pxp-company-job-title" class="form-label">Job title</label>
+                        @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control", @placeholder = "Job Tittle", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 col-xxl-3">
+                    <label for="pxp-company-job-location" class="form-label">Job Location</label>
+                    @Html.EditorFor(model => model.locat, new { htmlAttributes = new { @class = "form-control", @placeholder = "location", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.locat, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6 col-xxl-3">
+                    <div class="mb-3 form-group">
+                        <label for="pxp-company-job-category" class="form-label">Job Category</label><br />
+                        @Html.DropDownListFor(model => model.category, new List<SelectListItem>
+                         { new SelectListItem{Text="Accountant", Value="Accountant"},
+                                new SelectListItem{Text="Business Development", Value="Business Development"},
+                           new SelectListItem{Text="Helath Care", Value="Helath Care"},
+                           new SelectListItem{Text="Marketing & Communications", Value="Marketing & Communications"},
+                           new SelectListItem{Text="Human Resources", Value="Human Resources"},
+                           new SelectListItem{Text="Project Management", Value="Project Management"},
+                           new SelectListItem{Text="Customer Service", Value="Customer Service"},
+                           new SelectListItem{Text="Software Engineering", Value="Software Engineering"},
+                           
+
+
+
+                   },
+                           "Please select job Category")
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4">
+                <div class="form-label">&nbsp;</div>
+                <div class="pxp-candidate-cover mb-3">
+                    <input type="file" name="file" id="pxp-candidate-cover-choose-file" accept="image/*" required>
+                    <label for="pxp-candidate-cover-choose-file" class="pxp-cover"><span>Upload Cover Image</span></label>
+                    @Html.ValidationMessageFor(model => model.cover, "", new { @class = "text-danger", required = "required" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xxl-3">
+                    <label for="pxp-company-job-location" class="form-label">Job Discription</label>
+                    @Html.EditorFor(model => model.overview, new { htmlAttributes = new { @class = "form-control", @placeholder = "Discription about Job", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.overview, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6 col-xxl-3">
+                    <div class="mb-3 form-group">
+                        <label for="pxp-company-job-category" class="form-label">Job Responsiblities</label>
+                        @Html.EditorFor(model => model.responsiblities, new { htmlAttributes = new { @class = "form-control", @placeholder = "Responsibilities", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.responsiblities, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="pxp-company-job-description" class="form-label">Skills</label>
+                @Html.EditorFor(model => model.skills, new { htmlAttributes = new { @class = "form-control", @placeholder = "Skills", required = "required" } })
+                @Html.ValidationMessageFor(model => model.skills, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xxl-3">
+                    <div class="mb-3">
+                        <label for="pxp-company-job-salary" class="form-label">Salary range</label>
+                        @Html.EditorFor(model => model.salary, new { htmlAttributes = new { @class = "form-control", @placeholder = "Salary Range", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.salary, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6 col-xxl-3">
+                    <div class="mb-3">
+                        <label for="pxp-company-job-level" class="form-label">Experience</label>
+                        <br />
+                        @Html.RadioButtonFor(model => model.lvl, "At least 1 Year")
+                        At least 1 Year
+                        @Html.RadioButtonFor(model => model.lvl, "1+ Year")
+                        1+ year
+                        @Html.RadioButtonFor(model => model.lvl, "2+ Year")
+                        2+ year
+                        @Html.RadioButtonFor(model => model.lvl, "3+ year")
+                        3+ Year
+                    </div>
+                </div>
+                <div class="col-md-6 col-xxl-3">
+                    <div class="mb-3">
+                        <label for="pxp-company-job-type" class="form-label">Employment type</label>
+                        <br />
+                        Part Time
+                        @Html.RadioButtonFor(model => model.typE, "Part Time")
+                        &nbsp;&nbsp;Full Time
+                        @Html.RadioButtonFor(model => model.typE, "Full Time")
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xxl-3">
+                    <div class="mb-3">
+                        <label for="pxp-company-job-experience" class="form-label">Job Type</label>
+                        <br />
+                        @Html.RadioButtonFor(model => model.experince, "Internship")
+                        Internship
+                        @Html.RadioButtonFor(model => model.experince, "Junior Level")
+                        Junior Level<br />
+                        @Html.RadioButtonFor(model => model.experince, "Senior Level")
+                        Senior Level
+                        @Html.RadioButtonFor(model => model.experince, "Expert Level")
+                        Expert Level
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-4 mt-lg-5">
+                <button class="btn rounded-pill pxp-section-cta">Publish Job</button>
+            </div>
+        </form>
+    }
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+      
+
+    const listItems = document.querySelectorAll('.list-unstyled li');
+    const thisListItem = document.querySelector('.list-unstyled li:nth-child(3)');
+
+
+    listItems.forEach((li) => {
+        li.classList.remove('pxp-active');
+    })
+
+
+    thisListItem.classList.add('pxp-active');
+
+</script>

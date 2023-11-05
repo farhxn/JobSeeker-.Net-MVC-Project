@@ -1,0 +1,253 @@
+﻿@model JOBSEEKER.Jobmodel.tables
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="pxp-dashboard-content-details">
+    <h1>Dashboard</h1>
+    <p class="pxp-text-light">Welcome to Jobseeker!</p>
+
+    <div class="row mt-4 mt-lg-5 align-items-center">
+        <div class="col-sm-6 col-xxl-3">
+            <div class="pxp-dashboard-stats-card bg-primary bg-opacity-10 mb-3 mb-xxl-0">
+                <div class="pxp-dashboard-stats-card-icon text-primary">
+                    <span class="fa fa-file-text-o"></span>
+                </div>
+                <div class="pxp-dashboard-stats-card-info">
+                    <div class="pxp-dashboard-stats-card-info-number">@Session["app"]</div>
+                    <div class="pxp-dashboard-stats-card-info-text pxp-text-light">Applications For Job</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+            <div class="pxp-dashboard-stats-card bg-success bg-opacity-10 mb-3 mb-xxl-0">
+                <div class="pxp-dashboard-stats-card-icon text-success">
+                    <span class="fa fa-user-circle-o"></span>
+                </div>
+                <div class="pxp-dashboard-stats-card-info">
+                    <div class="pxp-dashboard-stats-card-info-number">@Session["jobp"]</div>
+                    <div class="pxp-dashboard-stats-card-info-text pxp-text-light">Candidates Profiles</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+            <div class="pxp-dashboard-stats-card bg-warning bg-opacity-10 mb-3 mb-xxl-0">
+                <div class="pxp-dashboard-stats-card-icon text-warning">
+                    <span class="fa fa-building"></span>
+                </div>
+                <div class="pxp-dashboard-stats-card-info">
+                    <div class="pxp-dashboard-stats-card-info-number">@Session["com"]</div>
+                    <div class="pxp-dashboard-stats-card-info-text pxp-text-light">Companies</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+            <div class="pxp-dashboard-stats-card bg-danger bg-opacity-10 mb-3 mb-xxl-0">
+                <div class="pxp-dashboard-stats-card-icon text-danger">
+                    <span class="fa fa-laptop"></span>
+                </div>
+                <div class="pxp-dashboard-stats-card-info">
+                    <div class="pxp-dashboard-stats-card-info-number">@Session["jobs"]</div>
+                    <div class="pxp-dashboard-stats-card-info-text pxp-text-light">Jobs Posted</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 mt-lg-5">
+        <h2>Recent Companies</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                @foreach (var com in Model.Companies)
+                {
+                    <tr>
+                        <td style="width: 3%;">
+                            <div class="pxp-candidate-dashboard-job-avatar pxp-cover"><a href="@Url.Action("singlecompany", "Home", new {@id = com.ID})" style="text-decoration:none;" class="text-dark"><img src="~/Image/@com.logo" class="img-fluid rounded" /></a></div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-title"><a href="@Url.Action("singlecompany", "Home", new {@id = com.ID})" style="text-decoration:none;" class="text-dark">@com.Name</a></div>
+                            <div class="pxp-candidate-dashboard-job-location">
+                                <span class="fa fa-globe"></span>@com.state, @com.country
+                            </div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-category">@com.industry</div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-location">
+                                @com.email
+                            </div>
+                        </td>
+                        <td>
+                            <div class="pxp-dashboard-table-options">
+                                <ul class="list-unstyled">
+                                    <button title="Edit @com.Name details" class="btn btn-warning btn-sm"><span class="fa fa-pencil-square-o"></span></button>
+                                    &nbsp;&nbsp;
+                                    <button title="Delete @com.Name details" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>
+                                    <li>
+                                        <a href="@Url.Action("singlecompany", "Home", new {@id = com.ID})"><button title="View @com.Name details"><span class="fa fa-eye"></span></button></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="mt-4 mt-lg-5">
+        <h2>Recent Jobs</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                @foreach (var job in Model.Jobs)
+                {
+                    <tr>
+                        <td style="width: 3%;">
+                            <div class="pxp-candidate-dashboard-job-avatar pxp-cover"><a href="@Url.Action("singlejob", "Home", new {@id = job.ID})" style="text-decoration:none;" class="text-dark"><img src="~/Image/@job.cover" class="img-fluid rounded" /></a></div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-title"><a href="@Url.Action("singlejob", "Home", new {@id = job.ID})" style="text-decoration:none;" class="text-dark">@job.title</a></div>
+                            <div class="pxp-candidate-dashboard-job-location">
+                                <span class="fa fa-globe"></span>@job.locat
+                            </div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-category">@job.company</div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-location">
+                                @job.typE
+                            </div>
+                        </td>
+                        <td>
+                            <div class="pxp-dashboard-table-options">
+                                <ul class="list-unstyled">
+                                    <button title="Edit @job.title details" class="btn btn-warning btn-sm"><span class="fa fa-pencil-square-o"></span></button>
+                                    &nbsp;&nbsp;
+                                    <button title="Delete @job.title details" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>
+                                    <li>
+                                        <a href="@Url.Action("singlejob", "Home", new {@id = job.ID})"><button title="View @job.title details"><span class="fa fa-eye"></span></button></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="mt-4 mt-lg-5">
+        <h2>Recent Canidates</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                @foreach (var jobp in Model.jobp)
+                {
+                    <tr>
+                        <td style="width: 3%;">
+                            <div class="pxp-candidate-dashboard-job-avatar pxp-cover"><a href="@Url.Action("singlecandiate", "Home", new {@id = jobp.ID})" style="text-decoration:none;" class="text-dark"><img src="~/Image/@jobp.img" class="img-fluid rounded" /></a></div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-title"><a href="@Url.Action("singlecandiate", "Home", new {@id = jobp.ID})" style="text-decoration:none;" class="text-dark">@jobp.name</a></div>
+                            <div class="pxp-candidate-dashboard-job-location">
+                                <span class="fa fa-globe"></span>@jobp.location
+                            </div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-category">@jobp.email</div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-location">
+                                @jobp.phone
+                            </div>
+                        </td>
+                        <td style="width: 10%;">
+                        </td>
+                        <td>
+                            <div class="pxp-dashboard-table-options">
+                                <span>
+                                </span>
+                                <ul class="list-unstyled">
+                                    <button title="Edit @jobp.name details" class="btn btn-warning btn-sm"><span class="fa fa-pencil-square-o"></span></button>
+                                    &nbsp;&nbsp;
+                                    <button title="Delete @jobp.name details" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>
+                                    <li>
+                                        <a href="@Url.Action("singlecandiate", "Home", new {@id = jobp.ID})"><button title="View @jobp.name details"><span class="fa fa-eye"></span></button></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="mt-4 mt-lg-5">
+        <h2>Recent Applications</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                @foreach (var app in Model.applications)
+                {
+                    <tr>
+                        <td style="width: 3%;">
+                            <div class="pxp-candidate-dashboard-job-avatar pxp-cover"><a href="@Url.Action("singlecandiate", "Home", new {@id = app.ID})" style="text-decoration:none;" class="text-dark"><img src="~/Image/@app.userimg" class="img-fluid rounded" /></a></div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-title"><a href="@Url.Action("singlecandiate", "Home", new {@id = app.ID})" style="text-decoration:none;" class="text-dark">@app.username</a></div>
+                            <div class="pxp-candidate-dashboard-job-location">
+                            @app.application_tittle
+                            </div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-category">@app.comemail</div>
+                        </td>
+                        <td style="width: 25%;">
+                            <div class="pxp-candidate-dashboard-job-location">
+                                <span class="fa fa-globe"></span>@app.application_locat
+                            </div>
+                        </td>
+                        <td style="width: 10%;">
+                        </td>
+                        <td>
+                            <div class="pxp-dashboard-table-options">
+                                <span>
+                                </span>
+                                <ul class="list-unstyled">
+                                    <button title="Edit @app.username details" class="btn btn-warning btn-sm"><span class="fa fa-pencil-square-o"></span></button>
+                                    &nbsp;&nbsp;
+                                    <button title="Delete @app.username details" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>
+                                    <li>
+                                        <a href="@Url.Action("singlecandiate", "Home", new {@id = app.ID})"><button title="View @app.username details"><span class="fa fa-eye"></span></button></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="mt-4 mt-lg-5">
+        <h2>Recent Categories</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                @foreach (var cat in Model.Categories)
+                {
+                    <tr>
+                        <td>
+                            <div class="pxp-candidate-dashboard-job-avatar pxp-cover"><span class="@cat.logo"></span></div>
+                        </td>
+                        <td>
+                            <div class="pxp-candidate-dashboard-job-title">@cat.Name</div>
+                        </td>
+                        <td>
+                            <div class="pxp-dashboard-table-options">
+                                <button title="Edit @cat.Name details" class="btn btn-warning btn-sm"><span class="fa fa-pencil-square-o"></span></button>
+                                <button title="Delete @cat.Name details" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

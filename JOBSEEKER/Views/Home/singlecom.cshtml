@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "singlecompany";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@model JOBSEEKER.Models.company
+
+<section class="pxp-single-company-hero pxp-cover">
+    <img class="img-fluid" style="height:100%; width:100%" src="~/image/@Model.Cover" />
+    <div class="pxp-hero-opacity"></div>
+    <div class="pxp-single-company-hero-caption">
+        <div class="pxp-container">
+            <div class="pxp-single-company-hero-content">
+                <div class="pxp-single-company-hero-logo"><img style="border-radius:50%" class="img-fluid" src="~/image/@Model.logo" /></div>
+                <div class="pxp-single-company-hero-title">
+                    <h1>@Model.Name</h1>
+                    <div class="pxp-single-company-hero-location"><span class="fa fa-globe"></span>@Model.state ,@Model.country</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mt-100">
+    <div class="pxp-container">
+        <div class="row">
+            <div class="col-lg-7 col-xl-8 col-xxl-9">
+                <div class="pxp-single-company-content">
+                    <h2>About @Model.Name</h2>
+                    <p>@Model.discription.</p>
+
+                    <div class="pxp-single-company-gallery mt-3 mt-lg-4">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-12 col-xl-6 col-xxl-3">
+                                <a href="images/company-hero-1.jpg" class="pxp-single-company-gallery-item">
+                                    <div class="pxp-single-company-gallery-item-fig pxp-cover"><img class="img-fluid" src="~/Image/@Model.img1" /></div>
+                                    <div class="pxp-single-company-gallery-item-caption"></div>
+                                </a>
+                                <a href="images/company-hero-3.jpg" class="pxp-single-company-gallery-item">
+                                    <div class="pxp-single-company-gallery-item-fig pxp-cover"><img class="img-fluid" src="~/Image/@Model.img2" /></div>
+                                    <div class="pxp-single-company-gallery-item-caption"></div>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-12 col-xl-6 col-xxl-3">
+                                <a href="images/company-hero-1.jpg" class="pxp-single-company-gallery-item">
+                                    <div class="pxp-single-company-gallery-item-fig pxp-cover"><img class="img-fluid" src="~/Image/@Model.img3" /></div>
+                                    <div class="pxp-single-company-gallery-item-caption"></div>
+                                </a>
+                                <a href="images/company-hero-3.jpg" class="pxp-single-company-gallery-item">
+                                    <div class="pxp-single-company-gallery-item-fig pxp-cover"><img class="img-fluid" src="~/Image/@Model.img4" /></div>
+                                    <div class="pxp-single-company-gallery-item-caption"></div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-5 col-xl-4 col-xxl-3">
+                <div class="pxp-single-company-side-panel mt-5 mt-lg-0">
+                    <div class="mt-4">
+                        <div class="pxp-single-company-side-info-label pxp-text-light">Industry</div>
+                        <div class="pxp-single-company-side-info-data">@Model.industry</div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="pxp-single-company-side-info-label pxp-text-light">Company size</div>
+                        <div class="pxp-single-company-side-info-data">@Model.size</div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="pxp-single-company-side-info-label pxp-text-light">Founded in</div>
+                        <div class="pxp-single-company-side-info-data">@Model.founded</div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="pxp-single-company-side-info-label pxp-text-light">Phone</div>
+                        <div class="pxp-single-company-side-info-data">@Model.phone</div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="pxp-single-company-side-info-label pxp-text-light">Email</div>
+                        <div class="pxp-single-company-side-info-data">@Model.email</div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="pxp-single-company-side-info-label pxp-text-light">Location</div>
+                        <div class="pxp-single-company-side-info-data">@Model.state, @Model.country</div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="pxp-single-company-side-info-label pxp-text-light">Website</div>
+                        <div class="pxp-single-company-side-info-data"><a href="#">@Model.website</a></div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="pxp-single-company-side-info-data">
+                            <ul class="list-unstyled pxp-single-company-side-info-social">
+                                <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="#"><span class="fa fa-instagram"></span></a></li>
+                                <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pxp-single-company-side-panel mt-4 mt-lg-5">
+                    <h3>Contact Company</h3>
+                    <form class="mt-4">
+                        <div class="mb-3">
+                            <label for="contact-company-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="contact-company-name" placeholder="Enter your name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-company-email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="contact-company-email" placeholder="Enter your email address">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-company-message" class="form-label">Message</label>
+                            <textarea class="form-control" id="contact-company-message" placeholder="Type your message here..."></textarea>
+                        </div>
+                        <a href="#" class="btn rounded-pill pxp-section-cta d-block">Send Message</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mt-100">
+    <div class="pxp-container">
+        <h2 class="pxp-subsection-h2">Available Jobs</h2>
+        <p class="pxp-text-light">Jobs list posted by @Model.Name</p>
+        <div class="row mt-3 mt-md-4 pxp-animate-in pxp-animate-in-top pxp-in">
+            @{
+                var faq = ViewBag.options;
+                foreach (var item in faq)
+                {
+
+                    <div class="col-xl-6 pxp-jobs-card-2-container">
+                        <div class="pxp-jobs-card-2 pxp-has-border">
+                            <div class="pxp-jobs-card-2-top">
+                                <a href="@Url.Action("singlejob","Home" ,new {@id = item.ID})" class="pxp-jobs-card-2-company-logo"><img class="img-fluid" style="border-radius:20%" src="~/Image/@item.cover" /></a>
+                                <div class="pxp-jobs-card-2-info">
+                                    <a href="@Url.Action("singlejob","Home" ,new {@id = item.ID})" class="pxp-jobs-card-2-title">@item.title</a>
+                                    <div class="pxp-jobs-card-2-details">
+                                        <a href="@Url.Action("singlejob","Home" ,new {@id = item.ID})" class="pxp-jobs-card-2-location">
+                                            <span class="fa fa-globe"></span>@item.locat
+                                        </a>
+                                        <div class="pxp-jobs-card-2-type">@item.typE</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pxp-jobs-card-2-bottom">
+                                <a href="@Url.Action("catjob", "Home", new {@cat = item.category})" class="pxp-jobs-card-1-category">
+                                    <div class="pxp-jobs-card-1-category-icon"><span class="fa fa-bullhorn"></span></div>
+                                    <div class="pxp-jobs-card-1-category-label">@item.category</div>
+                                </a>
+                                <div class="pxp-jobs-card-2-bottom-right">
+                                    <span class="pxp-jobs-card-2-date pxp-text-light">Posted by</span> <a href="@Url.Action("singlecompany","Home" ,new {@id = @Model.ID})" class="pxp-jobs-card-2-company">@item.company</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+            }
+        </div>
+    </div>
+</section>
+<br />

@@ -1,0 +1,223 @@
+﻿
+@{
+    ViewBag.Title = "editcompany";
+    Layout = "~/Views/Shared/_Layoutjobpost.cshtml";
+}
+@model JOBSEEKER.Models.company
+<div class="pxp-dashboard-content-details">
+    <h1 class="text-center">Edit COMPANY</h1>
+    <p class="text-center pxp-text-light">Edit your company profile here.</p>
+    @using (Html.BeginForm("editcompany", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+<form>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @Value = @Model.password } })
+    @Html.HiddenFor(model => model.Cover, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @Value = @Model.Cover } })
+    @Html.HiddenFor(model => model.logo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @Value = @Model.logo } })
+    @Html.HiddenFor(model => model.img1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @Value = @Model.img1 } })
+    @Html.HiddenFor(model => model.img2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @Value = @Model.img2 } })
+    @Html.HiddenFor(model => model.img3, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @Value = @Model.img3 } })
+    @Html.HiddenFor(model => model.img4, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @Value = @Model.img4 } })
+    <div class="row mt-4 mt-lg-5">
+        <div class="col-xxl-8">
+            <div class="mb-3">
+                @Html.HiddenFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @Value = @Session["CompanyName"] } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                <div class="mb-3">
+                    @Html.HiddenFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @placeholder = "E-Mail you were registered with" } })
+                    @Html.HiddenFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @placeholder = "E-Mail you were registered with" } })
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="pxp-company-phone" class="form-label">Phone</label>
+                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone Number", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="pxp-company-website" class="form-label">Website</label>
+                @Html.EditorFor(model => model.website, new { htmlAttributes = new { @class = "form-control", @placeholder = "url: https//", required = "required" } })
+                @Html.ValidationMessageFor(model => model.website, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="pxp-company-logo">
+                    <input type="file" accept="image/*" name="logo" id="pxp-company-logo-choose-file">
+                    <label for="pxp-company-logo-choose-file" class="pxp-cover"><span>Upload<br>Logo</span></label>
+                    @Html.ValidationMessageFor(model => model.logo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xxl-4">
+            <div class="form-label">&nbsp;</div>
+            <div class="pxp-company-cover mb-3">
+                <input type="file" accept="image/*" name="file" id="pxp-company-cover-choose-file">
+                <label for="pxp-company-cover-choose-file" class="pxp-cover"><span>Upload Cover Image</span></label>
+                @Html.ValidationMessageFor(model => model.Cover, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <h2>Featured Images</h2>
+        @* <div class="col-3 text-center">
+                <input class="hidden" name="img1" style="display:none" accept="image/*" type='file' id="imgInp" />
+                <label for="imgInp" name="img1" >Select Company Images  </label> <br />
+                @Html.ValidationMessageFor(model => model.img1, "", new { @class = "text-danger" })
+                <img id="blah" name="img1" src="#" class="img-fluid" width="100" height="80" />
+            </div>*@
+        <div class="col">
+            <div class="pxp-company-logo">
+                <input type="file" accept="image/*" name="img1">
+                <label for="pxp-company-logo-choose-file" class="pxp-cover"></label>
+                @Html.ValidationMessageFor(model => model.img1, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="pxp-company-logo">
+                <input type="file" accept="image/*" name="img2">
+                <label for="pxp-company-logo-choose-file" class="pxp-cover"></label>
+                @Html.ValidationMessageFor(model => model.img2, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="pxp-company-logo">
+                <input type="file" accept="image/*" name="img3">
+                <label for="pxp-company-logo-choose-file" class="pxp-cover"></label>
+                @Html.ValidationMessageFor(model => model.img3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="pxp-company-logo">
+                <input type="file" accept="image/*" name="img4">
+                <label for="pxp-company-logo-choose-file" class="pxp-cover"></label>
+                @Html.ValidationMessageFor(model => model.img4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+    <br />
+    <h2>Company Detail</h2>
+    <div class="mb-3">
+        <label for="pxp-company-about" class="form-label">About the company</label>
+        @Html.EditorFor(model => model.discription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Discription about your company" } })
+        @Html.ValidationMessageFor(model => model.discription, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="pxp-company-industry" class="form-label">Industry</label>
+                @Html.EditorFor(model => model.industry, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Eg # Software" } })
+                @Html.ValidationMessageFor(model => model.industry, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="pxp-company-founded" class="form-label">Founded in</label>
+                @Html.EditorFor(model => model.founded, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Eg # 1999  " } })
+                @Html.ValidationMessageFor(model => model.founded, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="pxp-company-size" class="form-label">Company size</label>
+                @Html.EditorFor(model => model.size, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "eg# 100 - 10000" } })
+                @Html.ValidationMessageFor(model => model.size, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 mt-lg-5">
+        <h2>Company Location</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="pxp-company-country" class="form-label">Country/State</label>
+                    @Html.EditorFor(model => model.country, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Eg # Pakistan  " } })
+                    @Html.ValidationMessageFor(model => model.country, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="pxp-company-city" class="form-label">City</label>
+                    @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Eg # Karcahi" } })
+                    @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="pxp-company-address" class="form-label">Address</label>
+            @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Eg # Flat No.2/12 awari tower, karachi" } })
+            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="mt-4 mt-lg-5">
+        <h2>Social Media</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="pxp-company-facebook" class="form-label">Facebook</label>
+                    @Html.EditorFor(model => model.facebook, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Eg # softonix" } })
+                    @Html.ValidationMessageFor(model => model.facebook, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="pxp-company-twitter" class="form-label">Twitter</label>
+                    @Html.EditorFor(model => model.twitter, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Eg # softonix" } })
+                    @Html.ValidationMessageFor(model => model.twitter, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="pxp-company-instagram" class="form-label">Instagram</label>
+                    @Html.EditorFor(model => model.instagram, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Eg # Softonix" } })
+                    @Html.ValidationMessageFor(model => model.instagram, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="pxp-company-linkedin" class="form-label">Linkedin</label>
+                    @Html.EditorFor(model => model.linkdin, new { htmlAttributes = new { @class = "form-control", required = "required", @placeholder = "Eg # Softonix" } })
+                    @Html.ValidationMessageFor(model => model.linkdin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 mt-lg-5">
+        <button type="submit" class="btn rounded-pill pxp-section-cta">Save Profile</button>
+    </div>
+</form>
+    }
+</div>
+
+<script>
+
+
+
+    const listItems = document.querySelectorAll('.list-unstyled li');
+    const thisListItem = document.querySelector('.list-unstyled li:nth-child(2)');
+
+
+    listItems.forEach((li) => {
+        li.classList.remove('pxp-active');
+    })
+
+
+    thisListItem.classList.add('pxp-active');
+
+    
+</script>

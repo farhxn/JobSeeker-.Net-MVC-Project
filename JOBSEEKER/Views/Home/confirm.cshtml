@@ -1,0 +1,36 @@
+﻿@model JOBSEEKER.Jobmodel.tables
+@{
+    ViewBag.Title = "confirm";
+    Layout = "~/Views/Shared/homelayout2.cshtml";
+}
+<div class="container text-center mt-3">
+    <img src="~/Image/animate.gif" height="500px" class="text-center mt-3" />
+
+    @using (Html.BeginForm("confirm", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.app.useremail, new { htmlAttributes = new { @class = "form-control", @Hidden = "hidden", Name = "usermail", @Value = Session["Email"] } })
+        @Html.ValidationMessageFor(model => model.app.useremail, "");
+        @Html.EditorFor(model => model.app.userid, new { htmlAttributes = new { @class = "form-control",@Hidden = "hidden", Name = "userid", @Value = Session["UserLogin"] } })
+        @Html.ValidationMessageFor(model => model.app.userid, "");
+        @Html.EditorFor(model => model.app.username, new { htmlAttributes = new { @class = "form-control", @Hidden = "hidden", Name = "username", @Value = Session["Name"] } })
+        @Html.ValidationMessageFor(model => model.app.username, "");
+        @Html.EditorFor(model => model.app.userimg, new { htmlAttributes = new { @class = "form-control", @Hidden = "hidden", Name = "userimg", @Value = Session["img"] } })
+        @Html.ValidationMessageFor(model => model.app.userimg, "");
+        @Html.EditorFor(model => model.app.comemail, new { htmlAttributes = new { @class = "form-control", @Hidden = "hidden", Name = "commail", @Value = Session["comname"] } })
+        @Html.ValidationMessageFor(model => model.app.comemail, "");
+        @Html.EditorFor(model => model.app.application_tittle, new { htmlAttributes = new { @class = "form-control", @Hidden = "hidden", Name = "title", @Value = Session["title"] } })
+        @Html.ValidationMessageFor(model => model.app.application_tittle, "");
+        @Html.EditorFor(model => model.app.application_locat, new { htmlAttributes = new { @class = "form-control", @Hidden = "hidden", Name = "locat", @Value = Session["locat"] } })
+        @Html.ValidationMessageFor(model => model.app.application_locat, "");
+        <div class=" text-center pxp-animate-in pxp-animate-in-top mb-5 ">
+            <button type="submit" class="btn rounded-pill pxp-section-cta"><a class="text-white">Continue<span class="fa fa-angle-right"></span></a></button>
+        </div>
+
+    }
+
+
+</div>
+
+
